@@ -3,3 +3,23 @@ Nirma WorkShop Figma
 Generate a UI with AI (10 mins)
 
 Goal: Create a Login / Signup App Screen in less than 5 mins.
+
+Open UX Pilot ai plugin in figma
+
+Give a prompt to create a login screen.
+
+Prompt
+
+Create a modern, responsive login screen for a web application.
+Include a centered login card with rounded corners and soft shadows.
+Fields: Email input, Password input, and a "Remember Me" checkbox.
+Buttons: "Login" (primary CTA), "Forgot Password?" (link style), and "Sign Up" (secondary CTA).
+Add app logo at the top.
+Use a clean, minimal design with a white card on a light background.
+Typography should be clear and modern (Sans-serif).
+Add subtle accent color for the primary button.
+Make it mobile-friendly with responsive layout.
+
+After prompt it will create figma UI
+
+User Builder.io Figma plugin to convert it to code.
