@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Feedback App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+    h1 { text-align: center; }
+    form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    input, textarea, button { width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    .feedback-card { background: white; margin-top: 15px; padding: 15px; border-radius: 8px; }
+    .sentiment { font-weight: bold; padding: 4px 8px; border-radius: 4px; color: white; }
+    .positive { background: green; }
+    .neutral { background: gray; }
+    .negative { background: red; }
+  </style>
+</head>
+<body>
+  <h1>Student Feedback App</h1>
+  <form id="feedbackForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="subject" placeholder="Subject" required>
+    <textarea id="feedback" placeholder="Write your feedback..." required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="feedbackList"></div>
+
+  <script>
+    const feedbackList = document.getElementById('feedbackList');
+    const form = document.getElementById('feedbackForm');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const subject = document.getElementById('subject').value;
+      const feedback = document.getElementById('feedback').value;
+
+      const summary = generateSummary(feedback);
+      const sentiment = generateSentiment(feedback);
+
+      const card = document.createElement('div');
+      card.className = 'feedback-card';
+      card.innerHTML = `
+        <h3>${name} - ${subject}</h3>
+        <p>${summary}</p>
+        <span class="sentiment ${sentiment.toLowerCase()}">${sentiment}</span>
+      `;
+      feedbackList.prepend(card);
+      form.reset();
+    });
+
+    function generateSummary(text) {
+      return text.length > 50 ? text.slice(0, 50) + "..." : text;
+    }
+    function generateSentiment(text) {
+      if (text.includes("good") || text.includes("great")) return "Positive";
+      if (text.includes("bad") || text.includes("poor")) return "Negative";
+      return "Neutral";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+Goal: Get a crisp explanation about a web concept.
+
+Prompt: Explain how React differs from Angular in terms of architecture and learning curve. Keep the explanation simple as if explaining to a 2nd-year student.
+
+Goal: Generate outputs in a developer-friendly format.
+
+Prompt:
+
+Generate a JSON object that represents a student profile with fields:
+- name (string)
+- rollNumber (number)
+- year (number)
+- skills (array of strings)
+
+Generate an HTML snippet for a simple student registration form with fields: name, email, password. Add a submit button.
+
+Goal: Tell AI to act in a role.
+
+Prompt:
+
+You are a senior frontend developer. Suggest best practices for making a responsive e-commerce product page using HTML, CSS, and JavaScript. Keep the explanation beginner-friendly.
+
+Goal: Show how context is carried over in multiple turns.
+
+Prompt:
+
+Generate a simple Express.js server with one route /hello that returns "Hello World".
+
+Prompt: 
+
+Now add a POST route /student that accepts JSON with name and rollNumber, and returns them back.
+
+Other Examples
+
+“Create a React component for a ToDo list”
+
+“Generate blog ideas for a college tech fest”
+
+“Act as a senior frontend dev. Review this HTML code.”
+
+Generate HTML/CSS for a portfolio section
+
+Create JSON dummy data for 5 blog posts
+
+Explain what this code does: useEffect(() => {}, [])
+
+Write FAQs for a “Library Management Web App”
+
+
+

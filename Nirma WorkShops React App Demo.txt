@@ -1,0 +1,41 @@
+Nirma WorkShops React App Demo
+
+You will need NodeJS, Download and install it.
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+npx create-react-app my-app
+cd my-app
+npm install
+npm start
+
+Prompt:
+
+Generate react boiler plate application in this folder
+
+Once app is generated, open the terminal and go to folder.
+
+Execute commands
+
+npm install
+npm start
+
+npm install react-scripts --save
+
+"react-scripts": "^5.0.1",
+
+Prompt: "Create a React component called Header with a title and a menu."
+
+Prompt: "Create a Footer component with copyright info."
+
+Prompt: "Create a Card component that takes title and description as props."
+
+Import them into App.tsx and render.
+
+Prompt: Add a button inside Card that shows an alert with the card’s title when clicked.
+
+TODO
+
+Add a ProfileCard with image, name, and email.
+
+Add a button to toggle light/dark mode.

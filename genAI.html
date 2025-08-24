@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #4f46e5;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      width: 100%;
+      background: #4f46e5;
+      color: #fff;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #3730a3;
+    }
+
+    .feedback-display {
+      margin-top: 25px;
+    }
+
+    .feedback-display h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    /* Feedback card styles */
+    .feedback-item {
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+
+    .feedback-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .feedback-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .feedback-header h4 {
+      margin: 0;
+      color: #222;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .positive {
+      background: #16a34a; /* green */
+    }
+
+    .negative {
+      background: #dc2626; /* red */
+    }
+
+    .neutral {
+      background: #6b7280; /* gray */
+    }
+
+    .feedback-item p {
+      margin: 6px 0;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .feedback-item strong {
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Student Feedback Form</h2>
+    <form id="feedbackForm">
+      <div class="form-group">
+        <label for="name">Student Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject" required>
+          <option value="" disabled selected>Select a subject</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Science">Science</option>
+          <option value="English">English</option>
+          <option value="History">History</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="feedback">Feedback</label>
+        <textarea id="feedback" name="feedback" placeholder="Write your feedback here..." required></textarea>
+      </div>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <div id="feedbackList" class="feedback-display" style="display:none;">
+      <h3>Submitted Feedback</h3>
+    </div>
+  </div>
+
+  <script>
+    // Dummy functions
+    function generateSummary(feedback) {
+      const sentences = feedback.split(/[.!?]/).filter(s => s.trim());
+      return (sentences[0] || "Summary line 1") + ".\n" + (sentences[1] || "Summary line 2") + ".";
+    }
+
+    function generateSentiment(feedback) {
+      const text = feedback.toLowerCase();
+      if (text.includes("good") || text.includes("great") || text.includes("excellent")) {
+        return "Positive";
+      } else if (text.includes("bad") || text.includes("poor") || text.includes("difficult")) {
+        return "Negative";
+      } else {
+        return "Neutral";
+      }
+    }
+
+    const form = document.getElementById('feedbackForm');
+    const feedbackList = document.getElementById('feedbackList');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const subject = document.getElementById('subject').value;
+      const feedback = document.getElementById('feedback').value.trim();
+
+      if (name && subject && feedback) {
+        const summary = generateSummary(feedback);
+        const sentiment = generateSentiment(feedback);
+
+        // choose badge class
+        let badgeClass = "neutral";
+        if (sentiment === "Positive") badgeClass = "positive";
+        if (sentiment === "Negative") badgeClass = "negative";
+
+        const feedbackItem = document.createElement('div');
+        feedbackItem.classList.add('feedback-item');
+        feedbackItem.innerHTML = `
+          <div class="feedback-header">
+            <h4>${name}</h4>
+            <span class="badge ${badgeClass}">${sentiment}</span>
+          </div>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p><strong>Feedback:</strong> ${feedback}</p>
+          <p><strong>Summary:</strong><br>${summary.replace(/\n/g, "<br>")}</p>
+        `;
+
+        feedbackList.appendChild(feedbackItem);
+        feedbackList.style.display = "block";
+
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

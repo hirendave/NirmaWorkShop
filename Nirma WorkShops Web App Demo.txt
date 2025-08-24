@@ -1,0 +1,16 @@
+Nirma WorkShops Web App Demo
+
+AI-Powered Student Feedback App
+
+Open ChatGPT (or AI tool) live.
+
+Type:
+“Generate a responsive HTML page with a student feedback form (Name, Subject, Feedback), styled with CSS”
+
+Next, type another prompt:
+“Add JavaScript to capture form input and display it in the feedback section without reloading the page.”
+
+Prompt:
+“Modify the JavaScript so that when feedback is submitted, it generates a short 2-line summary and a sentiment (Positive, Neutral, Negative). Use dummy functions generateSummary(feedback) and generateSentiment(feedback).”
+
+“Style the feedback cards with colors, rounded corners, and sentiment badges (green for positive, red for negative, gray for neutral).”

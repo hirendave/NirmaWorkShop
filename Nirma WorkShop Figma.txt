@@ -1,0 +1,5 @@
+Nirma WorkShop Figma
+
+Generate a UI with AI (10 mins)
+
+Goal: Create a Login / Signup App Screen in less than 5 mins.
